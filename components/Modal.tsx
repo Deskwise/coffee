@@ -11,13 +11,13 @@ interface ModalProps {
   noPadding?: boolean; // New prop to disable default padding/scroll
 }
 
-const Modal: React.FC<ModalProps> = ({ 
-  isOpen, 
-  onClose, 
-  children, 
-  title, 
+const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  children,
+  title,
   className = '',
-  noPadding = false 
+  noPadding = false
 }) => {
   const modalRoot = document.getElementById('modal-root');
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -61,7 +61,7 @@ const Modal: React.FC<ModalProps> = ({
   return createPortal(
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
       onClick={(e) => {
         // Close if click is on the overlay itself, not content within
         if (overlayRef.current && e.target === overlayRef.current) {
@@ -69,12 +69,16 @@ const Modal: React.FC<ModalProps> = ({
         }
       }}
     >
-      <div className={`bg-surface rounded-lg shadow-xl w-full max-h-[90vh] flex flex-col overflow-hidden transform transition-all duration-300 scale-100 ${className || 'max-w-lg'}`}>
-        <div className="flex justify-between items-center p-4 border-b border-gray-600 shrink-0 bg-surface z-10">
-          <h3 className="text-2xl font-bold font-sans text-white truncate pr-4 tracking-wide">{title}</h3>
+      <div className={`bg-[#1a0f0a] border-4 border-[#3E2723] rounded-xl shadow-2xl w-full max-h-[90vh] flex flex-col overflow-hidden transform transition-all duration-300 scale-100 relative ${className || 'max-w-lg'}`}>
+        {/* Wood grain texture */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #3E2723 0px, #1a0f0a 2px, #3E2723 4px)' }}></div>
+
+        {/* Header */}
+        <div className="flex justify-between items-center p-5 border-b-2 border-[#5D4037] shrink-0 bg-[#3E2723] z-10 relative">
+          <h3 className="text-2xl font-black text-[#E7E5E4] truncate pr-4 uppercase tracking-tight">{title}</h3>
           <button
             onClick={onClose}
-            className="text-text-secondary hover:text-text transition-colors duration-200 focus:outline-none"
+            className="text-[#78716C] hover:text-[#D97706] transition-colors duration-200 focus:outline-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -92,19 +96,20 @@ const Modal: React.FC<ModalProps> = ({
             </svg>
           </button>
         </div>
+
         {/* Content Wrapper */}
         {noPadding ? (
-          <div className="flex-1 min-h-0 flex flex-col relative">
+          <div className="flex-1 min-h-0 flex flex-col relative z-10">
             {children}
           </div>
         ) : (
-          <div className="p-4 flex-1 min-h-0 flex flex-col overflow-y-auto">
+          <div className="p-5 flex-1 min-h-0 flex flex-col overflow-y-auto relative z-10">
             {children}
           </div>
         )}
       </div>
     </div>,
-    document.getElementById('modal-root') || document.body 
+    document.getElementById('modal-root') || document.body
   );
 };
 

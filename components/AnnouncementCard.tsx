@@ -25,18 +25,23 @@ const AnnouncementCard: React.FC<AnnouncementCardProps> = ({
   };
 
   return (
-    <div className="bg-surface p-4 rounded-lg shadow-md border border-gray-600">
-      <div className="flex justify-between items-start mb-2">
-        <h3 className="text-xl font-semibold text-primary pr-8">{announcement.title}</h3>
-        {canDelete && (
-          <Button onClick={handleDelete} variant="danger" className="p-2 text-xs">
-            Delete
-          </Button>
-        )}
-      </div>
-      <p className="text-text-secondary mb-3">{announcement.content}</p>
-      <div className="text-sm text-gray-400">
-        Posted by: {author?.name || 'Unknown'} on {format(announcement.timestamp, 'MMM dd, yyyy h:mm a')}
+    <div className="card-industrial p-5 rounded-xl shadow-lg border border-[#3E2723] relative overflow-hidden">
+      {/* Wood grain texture */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #3E2723 0px, #1a0f0a 2px, #3E2723 4px)' }}></div>
+
+      <div className="relative z-10">
+        <div className="flex justify-between items-start mb-3">
+          <h3 className="text-xl font-black text-[#D97706] pr-8 uppercase tracking-tight">{announcement.title}</h3>
+          {canDelete && (
+            <Button onClick={handleDelete} variant="danger" className="p-2 text-xs">
+              Delete
+            </Button>
+          )}
+        </div>
+        <p className="text-[#A8A29E] mb-4 leading-relaxed">{announcement.content}</p>
+        <div className="text-xs text-[#78716C] font-bold uppercase tracking-wider border-t border-[#3E2723] pt-3">
+          Posted by: <span className="text-[#D97706]">{author?.name || 'Unknown'}</span> on {format(announcement.timestamp, 'MMM dd, yyyy h:mm a')}
+        </div>
       </div>
     </div>
   );

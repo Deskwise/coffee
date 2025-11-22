@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Timbercreek Men's Connect</title>
-    
+
     <!-- Google Fonts: Roboto and Roboto Condensed -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,900&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Configure Tailwind -->
     <script>
         tailwind.config = {
@@ -24,12 +27,56 @@
                         display: ['Roboto Condensed', 'sans-serif'], // Headlines
                     },
                     colors: {
+                        // PRIMARY: Keep red for energy/action
                         primary: {
                             DEFAULT: '#D6181F', // Performance Red
                             dark: '#8B0B0E',    // Deep Red
                             light: '#FF222A',   // Bright Red
                             glow: 'rgba(214, 24, 31, 0.6)'
                         },
+                        // COFFEE HOUSE PALETTE
+                        // Espresso Browns
+                        espresso: {
+                            DEFAULT: '#3E2723', // Dark Roast
+                            dark: '#1a0f0a',    // Almost Black Coffee
+                            light: '#5D4037',   // Medium Roast
+                            glow: 'rgba(62, 39, 35, 0.6)'
+                        },
+                        // Caramel/Amber (Coffee with cream)
+                        caramel: {
+                            DEFAULT: '#D97706', // Rich Caramel
+                            dark: '#92400E',    // Deep Amber
+                            light: '#F59E0B',   // Light Caramel
+                            glow: 'rgba(217, 119, 6, 0.6)'
+                        },
+                        // Burnt Orange (Whiskey, leather)
+                        burnt: {
+                            DEFAULT: '#EA580C', // Burnt Orange
+                            dark: '#C2410C',    // Deep Burnt
+                            light: '#FB923C',   // Light Orange
+                            glow: 'rgba(234, 88, 12, 0.6)'
+                        },
+                        // Copper/Bronze (Industrial pipes, espresso machines)
+                        copper: {
+                            DEFAULT: '#B45309', // Brushed Copper
+                            dark: '#78350F',    // Dark Bronze
+                            light: '#D97706',   // Bright Copper
+                            glow: 'rgba(180, 83, 9, 0.6)'
+                        },
+                        // Forest Green (Natural, earthy)
+                        forest: {
+                            DEFAULT: '#14532D', // Dark Forest
+                            dark: '#052e16',    // Deep Forest
+                            light: '#166534',   // Forest Green
+                            glow: 'rgba(20, 83, 45, 0.6)'
+                        },
+                        // Leather Brown
+                        leather: {
+                            DEFAULT: '#451A03', // Dark Leather
+                            dark: '#1C0A00',    // Black Leather
+                            light: '#713F12',   // Worn Leather
+                        },
+                        // Grays for industrial/concrete
                         secondary: {
                             DEFAULT: '#7A7A7A', // Steel Gray
                             dark: '#4A4A4A',    // Dark Gray
@@ -45,12 +92,24 @@
                     },
                     boxShadow: {
                         'glow': '0 0 20px rgba(214, 24, 31, 0.5)',
-                        'card': '0 0 0 1px #333333, 0 10px 30px -10px rgba(0, 0, 0, 0.8)',
-                        'metallic': 'inset 0 1px 0 0 rgba(255, 255, 255, 0.1)'
+                        'glow-espresso': '0 0 25px rgba(62, 39, 35, 0.6)',
+                        'glow-caramel': '0 0 25px rgba(217, 119, 6, 0.6)',
+                        'glow-copper': '0 0 25px rgba(180, 83, 9, 0.7)',
+                        'card': '0 0 0 1px rgba(217, 119, 6, 0.15), 0 10px 40px -12px rgba(0, 0, 0, 0.9)',
+                        'card-hover': '0 0 0 1px rgba(234, 88, 12, 0.4), 0 20px 50px -15px rgba(217, 119, 6, 0.5)',
+                        'metallic': 'inset 0 1px 0 0 rgba(217, 119, 6, 0.2)',
+                        'wood': '0 4px 20px rgba(62, 39, 35, 0.4)'
                     },
                     backgroundImage: {
                         'carbon': 'repeating-linear-gradient(45deg, #111 0, #111 2px, #000 2px, #000 4px)',
-                        'red-smoke': 'radial-gradient(circle at 50% 0%, rgba(214, 24, 31, 0.2), transparent 70%)'
+                        'red-smoke': 'radial-gradient(circle at 50% 0%, rgba(214, 24, 31, 0.2), transparent 70%)',
+                        // Coffee House Gradients
+                        'gradient-espresso': 'linear-gradient(135deg, #1a0f0a 0%, #3E2723 100%)',
+                        'gradient-caramel': 'linear-gradient(135deg, #92400E 0%, #F59E0B 100%)',
+                        'gradient-burnt': 'linear-gradient(135deg, #C2410C 0%, #FB923C 100%)',
+                        'gradient-copper': 'linear-gradient(135deg, #78350F 0%, #D97706 100%)',
+                        'gradient-warm': 'linear-gradient(135deg, #3E2723 0%, #D97706 50%, #EA580C 100%)',
+                        'wood-grain': 'repeating-linear-gradient(90deg, #3E2723 0px, #5D4037 2px, #3E2723 4px)',
                     },
                     animation: {
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -86,32 +145,44 @@
             -webkit-tap-highlight-color: transparent;
             background-color: #000000;
         }
+
         /* Custom Scrollbar - Industrial Style */
         ::-webkit-scrollbar {
             width: 6px;
         }
+
         ::-webkit-scrollbar-track {
-            background: #0C0C0E; 
+            background: #0C0C0E;
         }
+
         ::-webkit-scrollbar-thumb {
-            background: #333; 
+            background: #333;
             border-radius: 0px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
-            background: #D6181F; 
+            background: #D6181F;
         }
+
         /* Force Uppercase headers */
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Roboto Condensed', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             font-weight: 700;
         }
     </style>
-<link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/index.css">
 </head>
+
 <body class="bg-background text-text font-sans antialiased selection:bg-primary selection:text-white">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>

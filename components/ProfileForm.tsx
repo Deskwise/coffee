@@ -78,14 +78,18 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, onSave, onCancel, isNew
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 bg-surface rounded-lg shadow-lg">
-      <div className="flex flex-col items-center mb-6">
-        <img
-          src={profilePicture}
-          alt="Profile"
-          className="w-24 h-24 rounded-full object-cover border-4 border-primary mb-3"
-        />
-        <label htmlFor="profile-picture-upload" className="cursor-pointer text-primary hover:underline">
+    <form onSubmit={handleSubmit} className="p-6 card-industrial rounded-xl shadow-2xl border border-[#3E2723]">
+      {/* Profile Picture Section */}
+      <div className="flex flex-col items-center mb-8">
+        <div className="relative">
+          <img
+            src={profilePicture}
+            alt="Profile"
+            className="w-32 h-32 rounded border-4 border-[#7C2D12] object-cover shadow-lg"
+          />
+          <div className="absolute inset-0 rounded border-2 border-[#D97706]/20 pointer-events-none"></div>
+        </div>
+        <label htmlFor="profile-picture-upload" className="mt-4 cursor-pointer text-[#D97706] hover:text-[#F59E0B] font-bold uppercase tracking-wider text-sm transition-colors">
           Change Picture
         </label>
         <input
@@ -97,6 +101,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, onSave, onCancel, isNew
         />
       </div>
 
+      {/* Name Input */}
       <Input
         id="name"
         label="Name"
@@ -106,31 +111,33 @@ const ProfileForm: React.FC<ProfileFormProps> = ({ user, onSave, onCancel, isNew
         error={errors.name}
       />
 
-      <div className="mb-4">
-        <label htmlFor="bio" className="block text-sm font-medium text-text-secondary mb-1">
+      {/* Bio Section */}
+      <div className="mb-6">
+        <label htmlFor="bio" className="block text-xs font-bold text-[#9CA3AF] uppercase tracking-widest mb-2">
           Bio
         </label>
         <textarea
           id="bio"
-          className={`w-full p-3 bg-surface border border-gray-600 rounded-lg text-text placeholder-gray-400 focus:ring-primary focus:border-primary transition-colors duration-200 ${errors.bio ? 'border-danger focus:border-danger' : ''}`}
+          className={`w-full p-3 bg-[#0a0806] border rounded-lg text-[#E7E5E4] placeholder-[#57534E] focus:ring-2 focus:ring-[#D97706] focus:border-[#D97706] transition-all shadow-inner ${errors.bio ? 'border-red-500 focus:border-red-500' : 'border-[#3E2723]'}`}
           value={bio}
           onChange={(e) => setBio(e.target.value)}
           rows={4}
           placeholder="Tell us a little about yourself..."
         ></textarea>
-        {errors.bio && <p className="mt-1 text-sm text-danger">{errors.bio}</p>}
+        {errors.bio && <p className="mt-1 text-sm text-red-400 font-bold">{errors.bio}</p>}
         <Button
           type="button"
           variant="secondary"
           onClick={handleGenerateBio}
           loading={generateBioLoading}
-          className="mt-2 text-sm"
+          className="mt-3 text-xs"
         >
-          Generate Bio with AI
+          ✨ Generate Bio with AI
         </Button>
       </div>
 
-      <div className="flex justify-end space-x-4 mt-6">
+      {/* Action Buttons */}
+      <div className="flex justify-end space-x-4 mt-8 pt-6 border-t border-[#3E2723]">
         <Button type="button" variant="secondary" onClick={onCancel}>
           Cancel
         </Button>

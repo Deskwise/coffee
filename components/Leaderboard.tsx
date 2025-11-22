@@ -12,41 +12,61 @@ const Leaderboard: React.FC<LeaderboardProps> = ({ users, currentUser }) => {
 
   return (
     <div className="container mx-auto p-4 pt-16 pb-20">
-      <h2 className="text-2xl font-bold text-center text-text mb-6">Leaderboard</h2>
+      <h2 className="text-3xl font-black text-[#D97706] text-center mb-8 uppercase tracking-tight text-glow-amber">
+        ☕ Leaderboard
+      </h2>
 
-      <div className="bg-surface p-4 rounded-lg shadow-md mb-6 text-center">
-        <p className="text-text-secondary text-lg">
-          Your Rank: <span className="font-bold text-primary">{currentUserRank}</span>
-        </p>
-        <p className="text-text-secondary text-lg">
-          Your Points: <span className="font-bold text-primary">{currentUser.points}</span>
-        </p>
+      {/* Current User Stats - Leather Patch */}
+      <div className="card-industrial p-6 rounded-xl mb-6 text-center border-4 border-[#3E2723] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #3E2723 0px, #1a0f0a 2px, #3E2723 4px)' }}></div>
+        <div className="relative z-10">
+          <p className="text-[#A8A29E] text-sm uppercase tracking-widest font-bold mb-2">Your Standing</p>
+          <div className="flex justify-center gap-8">
+            <div>
+              <span className="text-4xl font-black text-[#D97706]">{currentUserRank}</span>
+              <p className="text-xs text-[#78716C] uppercase tracking-wider mt-1">Rank</p>
+            </div>
+            <div className="w-px bg-[#3E2723]"></div>
+            <div>
+              <span className="text-4xl font-black text-[#D97706]">{currentUser.points}</span>
+              <p className="text-xs text-[#78716C] uppercase tracking-wider mt-1">Points</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="bg-surface rounded-lg shadow-md overflow-hidden">
-        <div className="p-4 bg-background border-b border-gray-600 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 font-semibold text-text-secondary">
+      {/* Leaderboard Table - Industrial */}
+      <div className="card-industrial rounded-xl shadow-2xl overflow-hidden border border-[#3E2723]">
+        {/* Header */}
+        <div className="p-4 bg-[#3E2723] border-b-2 border-[#5D4037] grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 font-bold text-[#E7E5E4] uppercase tracking-widest text-xs">
           <div className="col-span-1">Rank</div>
           <div className="col-span-2 md:col-span-1 flex items-center">Name</div>
           <div className="hidden md:block col-span-1">Role</div>
           <div className="hidden lg:block col-span-1">Bio</div>
           <div className="col-span-1 text-right">Points</div>
         </div>
-        <ul className="divide-y divide-gray-700">
+
+        {/* Rows */}
+        <ul className="divide-y divide-[#3E2723]/30">
           {sortedUsers.map((user, index) => (
             <li
               key={user.id}
-              className={`p-4 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 items-center ${
-                user.id === currentUser.id ? 'bg-primary/20' : ''
-              }`}
+              className={`p-4 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 items-center transition-colors ${user.id === currentUser.id ? 'bg-[#D97706]/20 border-l-4 border-[#D97706]' : 'hover:bg-[#1a0f0a]/50'
+                }`}
             >
-              <div className="col-span-1 text-text">{index + 1}</div>
-              <div className="col-span-2 md:col-span-1 flex items-center space-x-3">
-                <img src={user.profilePicture} alt={user.name} className="w-8 h-8 rounded-full object-cover" />
-                <span className="font-medium text-text">{user.name}</span>
+              <div className="col-span-1 text-[#E7E5E4] font-bold text-lg">
+                {index === 0 && '🥇'}
+                {index === 1 && '🥈'}
+                {index === 2 && '🥉'}
+                {index > 2 && (index + 1)}
               </div>
-              <div className="hidden md:block col-span-1 text-text-secondary text-sm">{user.role}</div>
-              <div className="hidden lg:block col-span-1 text-text-secondary text-sm truncate">{user.bio}</div>
-              <div className="col-span-1 text-right font-bold text-primary">{user.points}</div>
+              <div className="col-span-2 md:col-span-1 flex items-center space-x-3">
+                <img src={user.profilePicture} alt={user.name} className="w-10 h-10 rounded border-2 border-[#7C2D12] object-cover shadow-sm" />
+                <span className="font-bold text-[#E7E5E4]">{user.name}</span>
+              </div>
+              <div className="hidden md:block col-span-1 text-[#A8A29E] text-xs uppercase tracking-wider">{user.role}</div>
+              <div className="hidden lg:block col-span-1 text-[#78716C] text-sm truncate">{user.bio}</div>
+              <div className="col-span-1 text-right font-black text-[#D97706] text-xl">{user.points}</div>
             </li>
           ))}
         </ul>

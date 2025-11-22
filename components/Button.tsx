@@ -14,26 +14,25 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
-  // Base: Sharp corners, uppercase, tracking, slanted
-  const baseStyles = 'relative inline-flex items-center justify-center px-6 py-3 font-bold text-sm uppercase tracking-widest transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed transform skew-x-[-10deg] active:scale-95 border-2';
-  
-  // Un-skew text wrapper
-  const contentClass = 'transform skew-x-[10deg] flex items-center gap-2';
+  // Base: Rugged, industrial, slightly rounded, uppercase
+  const baseStyles = 'relative inline-flex items-center justify-center px-6 py-3 font-bold text-sm uppercase tracking-widest transition-all duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed rounded-md border shadow-sm active:translate-y-0.5';
+
+  const contentClass = 'flex items-center gap-2';
 
   let variantStyles = '';
 
   switch (variant) {
     case 'primary':
-      // Red gradient, glowing
-      variantStyles = 'bg-primary border-primary text-white hover:bg-primary-light hover:border-primary-light hover:shadow-[0_0_15px_rgba(214,24,31,0.6)]';
+      // Burnt Orange / Deep Red - Action
+      variantStyles = 'bg-gradient-to-b from-[#B91C1C] to-[#991B1B] border-[#7F1D1D] text-white hover:from-[#DC2626] hover:to-[#B91C1C] hover:shadow-[0_0_15px_rgba(220,38,38,0.4)] hover:border-[#991B1B]';
       break;
     case 'secondary':
-      // Gunmetal, metallic border
-      variantStyles = 'bg-surfaceHighlight border-slate-600 text-text-secondary hover:text-white hover:border-white hover:bg-slate-700';
+      // Industrial Metal / Dark Leather
+      variantStyles = 'bg-[#27272A] border-[#3F3F46] text-[#D4D4D8] hover:bg-[#3F3F46] hover:text-white hover:border-[#52525B]';
       break;
     case 'danger':
-      // Dark red outline or solid
-      variantStyles = 'bg-transparent border-danger text-danger hover:bg-danger hover:text-white';
+      // Warning Red
+      variantStyles = 'bg-transparent border-[#7F1D1D] text-[#EF4444] hover:bg-[#7F1D1D]/20 hover:text-[#FCA5A5]';
       break;
     default:
       break;

@@ -1,0 +1,231 @@
+/* ========================================
+   TIMBERCREEK MEN'S CONNECT - INDUSTRIAL COFFEE THEME
+   ======================================== */
+
+/* Premium Animated Background Utilities */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    opacity: 0.5;
+    filter: blur(60px);
+  }
+
+  50% {
+    opacity: 0.8;
+    filter: blur(80px);
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(20px, -100px, 0);
+    opacity: 0;
+  }
+}
+
+/* --- INDUSTRIAL CARD STYLES --- */
+
+/* Base Industrial Card - Concrete/Metal Vibe */
+.card-industrial {
+  background: linear-gradient(145deg, rgba(26, 27, 29, 0.95) 0%, rgba(12, 12, 14, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+/* Leather Accent Card - For premium items */
+.card-leather {
+  background: linear-gradient(to bottom right, #3E2723, #1a0f0a);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  /* Amber border */
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.8),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+/* Add a subtle texture to leather cards */
+.card-leather::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Hover Effects */
+.hover-lift-industrial {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift-industrial:hover {
+  transform: translateY(-4px);
+  border-color: rgba(217, 119, 6, 0.4);
+  /* Amber glow on hover */
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(217, 119, 6, 0.2);
+  /* Amber glow */
+}
+
+/* --- TYPOGRAPHY & GLOWS --- */
+
+.text-glow-amber {
+  text-shadow: 0 0 10px rgba(217, 119, 6, 0.5);
+}
+
+.text-glow-copper {
+  text-shadow: 0 0 10px rgba(180, 83, 9, 0.6);
+}
+
+.border-glow-amber {
+  box-shadow: 0 0 15px rgba(217, 119, 6, 0.3);
+}
+
+/* --- BUTTONS --- */
+
+.btn-industrial {
+  background: linear-gradient(to bottom, #2d2d2d, #1a1a1a);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e5e5e5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.btn-industrial:hover {
+  background: linear-gradient(to bottom, #3d3d3d, #2a2a2a);
+  border-color: rgba(217, 119, 6, 0.5);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(217, 119, 6, 0.3);
+}
+
+.btn-primary-coffee {
+  background: linear-gradient(135deg, #D6181F 0%, #8B0B0E 100%);
+  /* Keep red as primary action */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 15px rgba(214, 24, 31, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-primary-coffee:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(214, 24, 31, 0.6);
+}
+
+/* Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #5D4037 #0C0C0E;
+  /* Coffee thumb, dark track */
+}
+
+/* --- TEXTURE UTILITIES --- */
+
+/* Prominent Wood Grain Texture */
+.texture-wood-grain {
+  position: relative;
+}
+
+.texture-wood-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(90deg,
+      rgba(62, 39, 35, 0.3) 0px,
+      rgba(93, 64, 55, 0.2) 2px,
+      rgba(62, 39, 35, 0.3) 4px,
+      rgba(26, 15, 10, 0.4) 6px);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Leather Texture */
+.texture-leather {
+  position: relative;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(93, 64, 55, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(62, 39, 35, 0.1) 0%, transparent 50%);
+}
+
+.texture-leather::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Subtle Noise Overlay */
+.texture-noise {
+  position: relative;
+}
+
+.texture-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Diagonal Stripes Pattern (for past time slots) */
+.texture-diagonal-stripes {
+  background-image: repeating-linear-gradient(45deg,
+      rgba(139, 11, 14, 0.1) 0px,
+      rgba(139, 11, 14, 0.1) 2px,
+      transparent 2px,
+      transparent 6px);
+}
+
+/* Enhanced Glow for Available Slots */
+.glow-available-slot {
+  transition: all 0.3s ease;
+}
+
+.glow-available-slot:hover {
+  background: rgba(217, 119, 6, 0.15) !important;
+  box-shadow:
+    inset 0 0 20px rgba(217, 119, 6, 0.2),
+    0 0 15px rgba(217, 119, 6, 0.3);
+}

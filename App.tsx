@@ -500,9 +500,9 @@ const App: React.FC = () => {
         </div>
 
         {adminSubView === 'Users' && (
-          <div className="bg-surface p-6 rounded-xl shadow-card border border-slate-700/50">
+          <div className="card-industrial p-6 rounded-xl border border-slate-700/50">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-semibold text-text">Manage Users</h3>
+              <h3 className="text-xl font-semibold text-text text-glow-amber">Manage Users</h3>
               <Button onClick={() => setIsNewUserModalOpen(true)}>Add User</Button>
             </div>
             <div className="overflow-x-auto">
@@ -552,9 +552,9 @@ const App: React.FC = () => {
         )}
 
         {adminSubView === 'Locations' && (
-          <div className="bg-surface p-6 rounded-xl shadow-card border border-slate-700/50">
+          <div className="card-industrial p-6 rounded-xl border border-slate-700/50">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-semibold text-text">Manage Locations</h3>
+              <h3 className="text-xl font-semibold text-text text-glow-amber">Manage Locations</h3>
               <Button onClick={() => setAddLocationModalOpen(true)}>Add Location</Button>
             </div>
 
@@ -599,9 +599,9 @@ const App: React.FC = () => {
         )}
 
         {adminSubView === 'Announcements' && (
-          <div className="bg-surface p-6 rounded-xl shadow-card border border-slate-700/50">
+          <div className="card-industrial p-6 rounded-xl border border-slate-700/50">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-semibold text-text">Manage Announcements</h3>
+              <h3 className="text-xl font-semibold text-text text-glow-amber">Manage Announcements</h3>
               <Button onClick={() => setAddAnnouncementModalOpen(true)}>New Post</Button>
             </div>
 
@@ -645,10 +645,97 @@ const App: React.FC = () => {
         />
       )}
 
-      {/* Background Mesh Gradient */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-emerald-900/20 via-background to-background opacity-70"></div>
-        <div className="absolute bottom-0 right-0 w-[50%] h-[50%] bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-blue-900/10 to-transparent opacity-50"></div>
+      {/* MASCULINE COFFEE HOUSE BACKGROUND */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Deep Espresso Base - Dark coffee shop vibe */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1a0f0a] via-[#0a0806] to-black"></div>
+
+        {/* Floating Coffee Steam Particles */}
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={`steam-${i}`}
+            className="absolute w-3 h-3 bg-amber-100/10 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${100 + Math.random() * 20}%`,
+              animation: `particle-float ${12 + Math.random() * 8}s linear infinite`,
+              animationDelay: `${Math.random() * 5}s`,
+              filter: 'blur(2px)',
+            }}
+          ></div>
+        ))}
+
+        {/* COFFEE GLOW ORBS - Warm, Industrial */}
+
+        {/* Deep Espresso/Brown - Top Left (dark roast) */}
+        <div
+          className="absolute -top-10 -left-20 w-[750px] h-[750px] rounded-full blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(92, 51, 23, 0.85) 0%, rgba(64, 35, 15, 0.6) 40%, rgba(42, 24, 10, 0.3) 70%, transparent 100%)',
+            animation: 'float 22s ease-in-out infinite, glow-pulse 9s ease-in-out infinite',
+          }}
+        ></div>
+
+        {/* Warm Amber/Caramel - Top Right (coffee with cream) */}
+        <div
+          className="absolute top-0 right-0 w-[800px] h-[800px] rounded-full blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(217, 119, 6, 0.7) 0%, rgba(180, 83, 9, 0.5) 40%, rgba(120, 53, 15, 0.3) 70%, transparent 100%)',
+            animation: 'float 26s ease-in-out infinite reverse, glow-pulse 11s ease-in-out infinite',
+            animationDelay: '2s',
+          }}
+        ></div>
+
+        {/* Burnt Orange - Bottom Left (whiskey, leather) */}
+        <div
+          className="absolute bottom-0 left-0 w-[700px] h-[700px] rounded-full blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(234, 88, 12, 0.65) 0%, rgba(194, 65, 12, 0.45) 40%, rgba(154, 52, 18, 0.25) 70%, transparent 100%)',
+            animation: 'float 28s ease-in-out infinite, glow-pulse 13s ease-in-out infinite',
+            animationDelay: '4s',
+          }}
+        ></div>
+
+        {/* Dark Forest Green/Charcoal - Bottom Right (natural, earthy) */}
+        <div
+          className="absolute bottom-0 right-0 w-[650px] h-[650px] rounded-full blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(20, 83, 45, 0.55) 0%, rgba(15, 60, 35, 0.35) 40%, rgba(10, 40, 25, 0.2) 70%, transparent 100%)',
+            animation: 'float 24s ease-in-out infinite reverse, glow-pulse 10s ease-in-out infinite',
+            animationDelay: '3s',
+          }}
+        ></div>
+
+        {/* Center Warm Copper Glow - Industrial coffee machine vibes */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(161, 98, 7, 0.4) 0%, rgba(120, 53, 15, 0.25) 50%, rgba(80, 35, 10, 0.15) 80%, transparent 100%)',
+            animation: 'glow-pulse 16s ease-in-out infinite',
+            animationDelay: '1s',
+          }}
+        ></div>
+
+        {/* Wood Grain Texture Overlay - Subtle */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='wood'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3CfeColorMatrix type='saturate' values='0.3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23wood)' fill='%23654321'/%3E%3C/svg%3E")`,
+            mixBlendMode: 'overlay',
+          }}
+        ></div>
+
+        {/* Dark vignette for industrial edge darkening */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)]"></div>
+
+        {/* Subtle concrete/leather texture */}
+        <div
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'concreteFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'1.8\' numOctaves=\'7\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23concreteFilter)\' fill=\'%234A4A4A\'/%3E%3C/svg%3E")',
+            mixBlendMode: 'overlay',
+          }}
+        ></div>
       </div>
 
       <Header currentUser={currentUser} onLogoClick={() => setCurrentView('Calendar')} />
