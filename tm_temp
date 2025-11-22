@@ -1,0 +1,2 @@
+#!/usr/bin/env node
+import{r as e}from"./src-CFqn3C_Q.js";import{join as t}from"node:path";import n from"dotenv";const r=process.cwd(),i=e();n.config({path:t(i,`.env`)}),process.env.TASKMASTER_ORIGINAL_CWD=r,process.env.DEBUG===`1`&&console.error(`DEBUG - dev.js received args:`,process.argv.slice(2));const{runCLI:a}=await import(`./commands-6U4VEasU.js`);a(process.argv);export{};

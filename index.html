@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Timbercreek Men's Connect</title>
+    
+    <!-- Google Fonts: Roboto and Roboto Condensed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configure Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'], // Body text
+                        display: ['Roboto Condensed', 'sans-serif'], // Headlines
+                    },
+                    colors: {
+                        primary: {
+                            DEFAULT: '#D6181F', // Performance Red
+                            dark: '#8B0B0E',    // Deep Red
+                            light: '#FF222A',   // Bright Red
+                            glow: 'rgba(214, 24, 31, 0.6)'
+                        },
+                        secondary: {
+                            DEFAULT: '#7A7A7A', // Steel Gray
+                            dark: '#4A4A4A',    // Dark Gray
+                            light: '#BFBFBF',   // Silver
+                        },
+                        background: '#000000', // Pure Black
+                        surface: '#0C0C0E',    // Charcoal
+                        surfaceHighlight: '#1A1B1D', // Gunmetal
+                        text: '#FFFFFF',       // White
+                        'text-secondary': '#9CA3AF', // Light Gray
+                        accent: '#FF222A',     // Bright Red
+                        danger: '#B91C1C'      // Darker Red
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(214, 24, 31, 0.5)',
+                        'card': '0 0 0 1px #333333, 0 10px 30px -10px rgba(0, 0, 0, 0.8)',
+                        'metallic': 'inset 0 1px 0 0 rgba(255, 255, 255, 0.1)'
+                    },
+                    backgroundImage: {
+                        'carbon': 'repeating-linear-gradient(45deg, #111 0, #111 2px, #000 2px, #000 4px)',
+                        'red-smoke': 'radial-gradient(circle at 50% 0%, rgba(214, 24, 31, 0.2), transparent 70%)'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'pop-in': 'popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both',
+                    },
+                    keyframes: {
+                        popIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.1",
+        "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "uuid": "https://aistudiocdn.com/uuid@^13.0.0",
+        "date-fns": "https://aistudiocdn.com/date-fns@^4.1.0",
+        "geolib": "https://aistudiocdn.com/geolib@^3.3.4",
+        "date-fns/": "https://aistudiocdn.com/date-fns@^4.1.0/"
+      }
+    }
+    </script>
+    <style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            background-color: #000000;
+        }
+        /* Custom Scrollbar - Industrial Style */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0C0C0E; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333; 
+            border-radius: 0px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D6181F; 
+        }
+        /* Force Uppercase headers */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Roboto Condensed', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+    </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-background text-text font-sans antialiased selection:bg-primary selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

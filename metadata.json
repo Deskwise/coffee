@@ -1,0 +1,9 @@
+{
+  "name": "Copy of Timbercreek Men's Connect",
+  "description": "A mobile-first web application to foster community and build friendships within the Timbercreek Church men's group through one-on-one coffee meetings.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}
