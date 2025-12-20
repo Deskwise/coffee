@@ -1,6 +1,5 @@
-
-import React, { useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 
 interface ModalProps {
   isOpen: boolean;
@@ -16,16 +15,16 @@ const Modal: React.FC<ModalProps> = ({
   onClose,
   children,
   title,
-  className = '',
-  noPadding = false
+  className = "",
+  noPadding = false,
 }) => {
-  const modalRoot = document.getElementById('modal-root');
+  const modalRoot = document.getElementById("modal-root");
   const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!modalRoot) {
-      const div = document.createElement('div');
-      div.id = 'modal-root';
+      const div = document.createElement("div");
+      div.id = "modal-root";
       document.body.appendChild(div);
       return () => {
         if (document.body.contains(div)) {
@@ -37,22 +36,22 @@ const Modal: React.FC<ModalProps> = ({
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         onClose();
       }
     };
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden'; // Prevent scrolling background
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden"; // Prevent scrolling background
     } else {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = '';
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "";
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = '';
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "";
     };
   }, [isOpen, onClose]);
 
@@ -61,7 +60,7 @@ const Modal: React.FC<ModalProps> = ({
   return createPortal(
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
       onClick={(e) => {
         // Close if click is on the overlay itself, not content within
         if (overlayRef.current && e.target === overlayRef.current) {
@@ -69,13 +68,23 @@ const Modal: React.FC<ModalProps> = ({
         }
       }}
     >
-      <div className={`bg-[#1a0f0a] border-4 border-[#3E2723] rounded-xl shadow-2xl w-full max-h-[90vh] flex flex-col overflow-hidden transform transition-all duration-300 scale-100 relative ${className || 'max-w-lg'}`}>
+      <div
+        className={`bg-[#1a0f0a] border-4 border-[#3E2723] rounded-xl shadow-2xl w-full max-h-[90vh] flex flex-col overflow-hidden transform transition-all duration-300 scale-100 relative ${className || "max-w-lg"}`}
+      >
         {/* Wood grain texture */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #3E2723 0px, #1a0f0a 2px, #3E2723 4px)' }}></div>
+        <div
+          className="absolute inset-0 opacity-10 pointer-events-none"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(45deg, #3E2723 0px, #1a0f0a 2px, #3E2723 4px)",
+          }}
+        ></div>
 
         {/* Header */}
         <div className="flex justify-between items-center p-5 border-b-2 border-[#5D4037] shrink-0 bg-[#3E2723] z-10 relative">
-          <h3 className="text-2xl font-black text-[#E7E5E4] truncate pr-4 uppercase tracking-tight">{title}</h3>
+          <h3 className="text-2xl font-black text-[#E7E5E4] truncate pr-4 uppercase tracking-tight">
+            {title}
+          </h3>
           <button
             onClick={onClose}
             className="text-[#78716C] hover:text-[#D97706] transition-colors duration-200 focus:outline-none"
@@ -109,7 +118,7 @@ const Modal: React.FC<ModalProps> = ({
         )}
       </div>
     </div>,
-    document.getElementById('modal-root') || document.body
+    document.getElementById("modal-root") || document.body,
   );
 };
 
