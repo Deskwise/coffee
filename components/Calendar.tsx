@@ -386,56 +386,48 @@ const Calendar: React.FC<CalendarProps> = ({
   };
 
   return (
-    <div className="fixed top-20 left-0 right-0 bottom-20 flex flex-col bg-black text-white font-sans relative overflow-hidden z-40">
-      {/* Ambient Top Lighting - Pendant Light Effect */}
-      <div className="absolute top-0 left-0 right-0 h-32 pointer-events-none z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#D97706]/20 via-[#D97706]/5 to-transparent"></div>
-        {/* Light pools - like hanging Edison bulbs */}
-        <div className="absolute top-0 left-1/4 w-48 h-48 bg-[#D97706] rounded-full blur-3xl opacity-10"></div>
-        <div className="absolute top-0 right-1/4 w-48 h-48 bg-[#B45309] rounded-full blur-3xl opacity-10"></div>
-      </div>
-
-      {/* TOP CONTROLS - Industrial Coffee Bar */}
-      <div className="relative shrink-0 px-4 py-4 grid grid-cols-1 sm:grid-cols-3 items-center gap-4 bg-[#3E2723] border-b border-[#D97706]/30 z-[100] shadow-xl backdrop-blur-md min-h-[80px]">
+    <div className="fixed top-20 left-0 right-0 bottom-20 flex flex-col bg-background text-text font-sans relative overflow-hidden z-40">
+      {/* TOP CONTROLS */}
+      <div className="relative shrink-0 px-4 py-4 grid grid-cols-1 sm:grid-cols-3 items-center gap-4 bg-surface border-b border-espresso z-[100] min-h-[80px]">
         {/* Empty Left Column for Centering */}
         <div className="hidden sm:block"></div>
 
         {/* Sliding Segmented Control - Centered */}
-        <div className="relative flex bg-[#0a0806] border border-[#3E2723] rounded-full p-1 w-full max-w-xs shadow-inner mx-auto z-50">
+        <div className="relative flex bg-background border border-espresso rounded-full p-1 w-full max-w-xs shadow-inner mx-auto z-50">
           {/* Sliding Pill */}
           <div
-            className={`absolute top-1 bottom-1 rounded-full shadow-md transition-all duration-300 ease-out z-0 ${viewMode === "community" ? "left-1 w-[calc(50%-4px)] bg-[#14532D]" : "left-[calc(50%+4px)] w-[calc(50%-8px)] bg-[#B45309]"}`}
+            className={`absolute top-1 bottom-1 rounded-full shadow-md transition-all duration-300 ease-out z-0 ${viewMode === "community" ? "left-1 w-[calc(50%-4px)] bg-forest" : "left-[calc(50%+4px)] w-[calc(50%-8px)] bg-copper"}`}
           ></div>
 
           <button
             onClick={() => setViewMode("community")}
-            className={`flex-1 relative z-10 py-2 text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${viewMode === "community" ? "text-white" : "text-[#9CA3AF] hover:text-white"}`}
+            className={`flex-1 relative z-10 py-2 text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${viewMode === "community" ? "text-white" : "text-text-secondary hover:text-white"}`}
           >
             Community
           </button>
           <button
             onClick={() => setViewMode("personal")}
-            className={`flex-1 relative z-10 py-2 text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${viewMode === "personal" ? "text-white" : "text-[#9CA3AF] hover:text-white"}`}
+            className={`flex-1 relative z-10 py-2 text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${viewMode === "personal" ? "text-white" : "text-text-secondary hover:text-white"}`}
           >
             My Schedule
           </button>
         </div>
 
         {/* Consolidated Date & Nav - Right Aligned */}
-        <div className="flex items-center justify-center sm:justify-end gap-4 bg-[#0a0806]/50 p-1.5 rounded-lg border border-[#3E2723]/50 sm:justify-self-end w-fit mx-auto sm:mx-0">
+        <div className="flex items-center justify-center sm:justify-end gap-4 bg-background/50 p-1.5 rounded-lg border border-espresso/50 sm:justify-self-end w-fit mx-auto sm:mx-0">
           <Button
             variant="secondary"
             onClick={handlePrevWeek}
-            className="w-8 h-8 p-0 rounded-md border-[#3E2723] text-[#D97706] hover:bg-[#3E2723] hover:text-white transition-colors"
+            className="w-8 h-8 p-0 rounded-md border-espresso text-caramel hover:bg-espresso hover:text-white transition-colors"
           >
             ‹
           </Button>
 
           <div className="text-center min-w-[120px]">
-            <div className="text-[10px] text-[#9CA3AF] font-bold uppercase tracking-widest leading-none">
+            <div className="text-[10px] text-text-secondary font-bold uppercase tracking-widest leading-none">
               Current View
             </div>
-            <div className="text-lg font-black uppercase text-[#D97706] tracking-tight text-glow-amber leading-none">
+            <div className="text-lg font-black uppercase text-caramel tracking-tight text-glow-amber leading-none">
               {format(currentWeekStart, "MMM yyyy")}
             </div>
           </div>
@@ -443,17 +435,17 @@ const Calendar: React.FC<CalendarProps> = ({
           <Button
             variant="secondary"
             onClick={handleNextWeek}
-            className="w-8 h-8 p-0 rounded-md border-[#3E2723] text-[#D97706] hover:bg-[#3E2723] hover:text-white transition-colors"
+            className="w-8 h-8 p-0 rounded-md border-espresso text-caramel hover:bg-espresso hover:text-white transition-colors"
           >
             ›
           </Button>
 
-          <div className="w-px h-6 bg-[#3E2723] mx-1"></div>
+          <div className="w-px h-6 bg-espresso mx-1"></div>
 
           <Button
             variant="secondary"
             onClick={handleToday}
-            className="h-8 px-3 text-[10px] rounded-md border-[#3E2723] text-[#D97706] hover:bg-[#3E2723] hover:text-white transition-colors"
+            className="h-8 px-3 text-[10px] rounded-md border-espresso text-caramel hover:bg-espresso hover:text-white transition-colors"
           >
             TODAY
           </Button>
@@ -465,7 +457,7 @@ const Calendar: React.FC<CalendarProps> = ({
       {/* 1. HEADER ROW (Separate Scroller, Synced via Ref) */}
       <div
         ref={headerRef}
-        className="flex-none overflow-x-auto overflow-y-hidden border-b border-[#D97706]/30 bg-[#1a0f0a] z-[60]"
+        className="flex-none overflow-x-auto overflow-y-hidden border-b border-caramel/30 bg-surface z-[60]"
         onScroll={handleHeaderScroll}
         style={{
           scrollbarWidth: "none",
@@ -476,8 +468,10 @@ const Calendar: React.FC<CalendarProps> = ({
       >
         <div className={`grid ${GRID_COLS_CLASS} min-w-[840px]`}>
           {/* Top Left Corner */}
-          <div className="bg-[#1a0f0a] border-r border-[#3E2723]/30 h-14 flex items-center justify-center">
-            <span className="text-[10px] text-[#5D4037] font-bold">TIME</span>
+          <div className="bg-surface border-r border-espresso/30 h-14 flex items-center justify-center">
+            <span className="text-[10px] text-espresso-light font-bold">
+              TIME
+            </span>
           </div>
           {/* Day Headers */}
           {weekDays.map((day) => {
@@ -485,15 +479,15 @@ const Calendar: React.FC<CalendarProps> = ({
             return (
               <div
                 key={day.toString()}
-                className={`h-14 flex flex-col items-center justify-center border-l border-[#3E2723]/10 ${isToday ? "bg-[#3E2723]" : ""}`}
+                className={`h-14 flex flex-col items-center justify-center border-l border-espresso/10 ${isToday ? "bg-espresso" : ""}`}
               >
                 <span
-                  className={`text-sm font-black uppercase tracking-widest mb-0.5 ${isToday ? "text-[#D97706]" : "text-[#9CA3AF]"}`}
+                  className={`text-sm font-black uppercase tracking-widest mb-0.5 ${isToday ? "text-caramel" : "text-text-secondary"}`}
                 >
                   {format(day, "EEE")}
                 </span>
                 <div
-                  className={`h-8 w-8 flex items-center justify-center text-xl font-bold rounded-full ${isToday ? "text-white bg-[#D97706]/20" : "text-[#5D4037]"}`}
+                  className={`h-8 w-8 flex items-center justify-center text-xl font-bold rounded-full ${isToday ? "text-white bg-caramel/20" : "text-espresso-light"}`}
                 >
                   {format(day, "d")}
                 </div>
@@ -506,7 +500,7 @@ const Calendar: React.FC<CalendarProps> = ({
       {/* 2. SCROLLABLE BODY (Drag to Scroll) */}
       <div
         ref={bodyRef}
-        className="flex-1 overflow-auto custom-scrollbar bg-[#0a0806] cursor-grab active:cursor-grabbing z-10"
+        className="flex-1 overflow-auto custom-scrollbar bg-background cursor-grab active:cursor-grabbing z-10"
         onScroll={handleBodyScroll}
         onMouseDown={handleMouseDown}
         onMouseLeave={handleMouseLeave}
@@ -524,11 +518,11 @@ const Calendar: React.FC<CalendarProps> = ({
           style={{ height: `${HOURS_COUNT * PIXELS_PER_HOUR}px` }}
         >
           {/* LEFT COLUMN: Time Labels */}
-          <div className="bg-[#1a0f0a] border-r border-[#3E2723]/30 relative">
+          <div className="bg-surface border-r border-espresso/30 relative">
             {Array.from({ length: HOURS_COUNT }).map((_, i) => (
               <div
                 key={`marker-${START_HOUR + i}`}
-                className="absolute right-2 text-sm text-[#9CA3AF] font-bold transform -translate-y-1/2"
+                className="absolute right-2 text-sm text-text-secondary font-bold transform -translate-y-1/2"
                 style={{ top: `${i * PIXELS_PER_HOUR}px` }}
               >
                 {format(
@@ -549,7 +543,7 @@ const Calendar: React.FC<CalendarProps> = ({
             return (
               <div
                 key={day.toString()}
-                className="relative border-l border-[#3E2723]/20"
+                className="relative border-l border-espresso/20"
               >
                 {/* Interactive Slots Layer */}
                 {Array.from({ length: HOURS_COUNT }).map((_, hourIndex) => {
@@ -565,7 +559,7 @@ const Calendar: React.FC<CalendarProps> = ({
                     return (
                       <div
                         key={`disabled-${START_HOUR + hourIndex}`}
-                        className="absolute w-full z-0 bg-[#000000]/70 texture-diagonal-stripes border-b border-[#3E2723]/10 flex items-center justify-center"
+                        className="absolute w-full z-0 bg-black/80 border-b border-espresso/10 flex items-center justify-center"
                         style={{
                           top: `${hourIndex * PIXELS_PER_HOUR}px`,
                           height: `${PIXELS_PER_HOUR}px`,
@@ -578,14 +572,14 @@ const Calendar: React.FC<CalendarProps> = ({
                     <button
                       type="button"
                       key={`slot-${START_HOUR + hourIndex}`}
-                      className="absolute w-full glow-available-slot cursor-pointer z-0 group/slot flex items-center justify-center outline-none p-0 bg-transparent border-t border-[#3E2723]/10"
+                      className="absolute w-full glow-available-slot cursor-pointer z-0 group/slot flex items-center justify-center outline-none p-0 bg-transparent border-t border-espresso/10"
                       style={{
                         top: `${hourIndex * PIXELS_PER_HOUR}px`,
                         height: `${PIXELS_PER_HOUR}px`,
                       }}
                       onClick={() => onGridClick(day, START_HOUR + hourIndex)}
                     >
-                      <div className="hidden group-hover/slot:flex items-center justify-center w-8 h-8 rounded-full bg-[#D97706] text-white transition-opacity duration-200 border-2 border-white z-10">
+                      <div className="hidden group-hover/slot:flex items-center justify-center w-8 h-8 rounded-full bg-caramel text-white transition-opacity duration-200 border-2 border-white z-10">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-5 w-5"
@@ -668,17 +662,17 @@ const Calendar: React.FC<CalendarProps> = ({
         title="INITIATE POST"
       >
         <div className="space-y-4">
-          <div className="bg-[#1a0f0a] p-4 border-l-4 border-[#D97706] rounded-r-lg shadow-inner">
-            <div className="text-xs text-[#9CA3AF] uppercase tracking-widest font-bold">
+          <div className="bg-surface p-4 border-l-4 border-caramel rounded-r-lg shadow-inner">
+            <div className="text-xs text-text-secondary uppercase tracking-widest font-bold">
               TARGET DATE
             </div>
-            <div className="text-2xl font-black text-white italic text-glow-amber">
+            <div className="text-2xl font-black text-text italic text-glow-amber">
               {newSlotDate ? format(newSlotDate, "MMM dd @ HH:mm") : ""}
             </div>
           </div>
 
           <div>
-            <div className="text-xs text-[#9CA3AF] font-bold uppercase tracking-widest">
+            <div className="text-xs text-text-secondary font-bold uppercase tracking-widest">
               DURATION
             </div>
             <div className="flex gap-2 mt-1">
@@ -686,7 +680,7 @@ const Calendar: React.FC<CalendarProps> = ({
                 <button
                   key={d.value}
                   onClick={() => setNewSlotDuration(d.value)}
-                  className={`flex-1 py-3 font-bold uppercase border rounded-md transition-all shadow-sm ${newSlotDuration === d.value ? "border-[#D97706] bg-[#D97706]/20 text-white" : "border-[#3E2723] text-[#9CA3AF] hover:border-[#D97706] hover:text-white"}`}
+                  className={`flex-1 py-3 font-bold uppercase border rounded-md transition-all shadow-sm ${newSlotDuration === d.value ? "border-caramel bg-caramel/20 text-text" : "border-espresso text-text-secondary hover:border-caramel hover:text-text"}`}
                 >
                   {d.label}
                 </button>
@@ -696,13 +690,13 @@ const Calendar: React.FC<CalendarProps> = ({
 
           {/* --- NEW PROMINENT LOCATION SELECTOR --- */}
           <div>
-            <div className="text-xs text-[#9CA3AF] font-bold uppercase tracking-widest mb-2 block">
+            <div className="text-xs text-text-secondary font-bold uppercase tracking-widest mb-2 block">
               TARGET LOCATION
             </div>
             <button
               type="button"
               onClick={() => setIsLocationModalOpen(true)}
-              className="relative w-full text-left group cursor-pointer overflow-hidden border border-[#3E2723] rounded-lg hover:border-[#D97706] transition-all duration-200 bg-[#0a0806] shadow-md outline-none focus:ring-2 focus:ring-[#D97706]"
+              className="relative w-full text-left group cursor-pointer overflow-hidden border border-espresso rounded-lg hover:border-caramel transition-all duration-200 bg-background shadow-md outline-none focus:ring-2 focus:ring-caramel"
             >
               {/* Wood Grain Pattern */}
               <div
@@ -716,7 +710,7 @@ const Calendar: React.FC<CalendarProps> = ({
               <div className="relative p-4 flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3 overflow-hidden">
                   {/* Icon Box */}
-                  <div className="w-10 h-10 shrink-0 bg-[#1a0f0a] flex items-center justify-center border border-[#3E2723] rounded group-hover:border-[#D97706] group-hover:text-[#D97706] transition-colors shadow-inner">
+                  <div className="w-10 h-10 shrink-0 bg-surface flex items-center justify-center border border-espresso rounded group-hover:border-caramel group-hover:text-caramel transition-colors shadow-inner">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6"
@@ -740,10 +734,10 @@ const Calendar: React.FC<CalendarProps> = ({
                   </div>
 
                   <div className="flex flex-col min-w-0">
-                    <span className="text-[10px] text-[#D97706] font-bold uppercase tracking-widest leading-none mb-1">
+                    <span className="text-[10px] text-caramel font-bold uppercase tracking-widest leading-none mb-1">
                       LOCATION LOCKED
                     </span>
-                    <span className="text-lg md:text-xl font-black text-white uppercase truncate leading-none group-hover:text-[#D97706] transition-colors text-shadow-sm">
+                    <span className="text-lg md:text-xl font-black text-text uppercase truncate leading-none group-hover:text-caramel transition-colors text-shadow-sm">
                       {locations.find((l) => l.id === newSlotLocationId)
                         ?.name || "SELECT DROPOINT"}
                     </span>
@@ -751,7 +745,7 @@ const Calendar: React.FC<CalendarProps> = ({
                 </div>
 
                 {/* Change Button Visual */}
-                <div className="shrink-0 bg-[#1a0f0a] px-3 py-1.5 border border-[#3E2723] rounded text-xs font-bold text-white uppercase group-hover:bg-[#D97706] group-hover:border-[#D97706] transition-colors shadow-sm">
+                <div className="shrink-0 bg-surface px-3 py-1.5 border border-espresso rounded text-xs font-bold text-text uppercase group-hover:bg-caramel group-hover:border-caramel transition-colors shadow-sm">
                   CHANGE
                 </div>
               </div>
@@ -832,7 +826,7 @@ const Calendar: React.FC<CalendarProps> = ({
             setNewSlotLocationId(locations[0].id);
           setIsPostModalOpen(true);
         }}
-        className="absolute bottom-8 right-8 w-16 h-16 bg-[#D97706] rounded-full shadow-[0_4px_20px_rgba(217,119,6,0.5)] flex items-center justify-center text-white z-50 hover:scale-110 hover:shadow-[0_8px_30px_rgba(217,119,6,0.7)] transition-all duration-300 group"
+        className="absolute bottom-8 right-8 w-16 h-16 bg-caramel rounded-full shadow-[0_4px_20px_rgba(217,119,6,0.5)] flex items-center justify-center text-white z-50 hover:scale-110 hover:shadow-[0_8px_30px_rgba(217,119,6,0.7)] transition-all duration-300 group"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -849,15 +843,6 @@ const Calendar: React.FC<CalendarProps> = ({
           />
         </svg>
       </button>
-
-      {/* Atmospheric Steam Overlay */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
-        <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-steam"></div>
-        <div
-          className="absolute bottom-0 right-1/3 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-steam"
-          style={{ animationDelay: "4s" }}
-        ></div>
-      </div>
 
       <LocationSelectionModal
         isOpen={isLocationModalOpen}
